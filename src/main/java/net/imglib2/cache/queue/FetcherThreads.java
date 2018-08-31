@@ -30,6 +30,7 @@
 package net.imglib2.cache.queue;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.function.IntFunction;
@@ -83,6 +84,9 @@ public class FetcherThreads
 			final int numFetcherThreads,
 			final IntFunction< String > threadIndexToName )
 	{
+		Arrays.asList( Thread.currentThread().getStackTrace() ).forEach( System.out::println );
+		System.out.println();
+
 		fetchers = new ArrayList<>( numFetcherThreads );
 		for ( int i = 0; i < numFetcherThreads; ++i )
 		{
